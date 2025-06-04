@@ -5,7 +5,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
+  //SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -20,28 +20,24 @@ import {
 
 import { Link } from "react-router-dom"
 import {
-  Calendar,
-  ChevronDown,
+  //ChevronDown,
   ChevronUp,
   Home,
-  Inbox,
-  Search,
+  Wrench,
   Settings,
   User2,
 } from "lucide-react"
 
 const items = [
   { title: "Home", to: "/home", icon: Home },
-  { title: "Inbox", to: "/inbox", icon: Inbox },
-  { title: "Calendar", to: "/calendar", icon: Calendar },
-  { title: "Search", to: "/search", icon: Search },
+  { title: "Tools", to: "/tools", icon: Wrench },
   { title: "Settings", to: "/settings", icon: Settings },
 ]
 
 export function AppSidebar() {
   return (
     <Sidebar>
-      {/* Header avec Dropdown de workspace */}
+      {/* Header avec Dropdown de workspace 
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -59,7 +55,7 @@ export function AppSidebar() {
             </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
-      </SidebarHeader>
+      </SidebarHeader> */}
 
       {/* Contenu principal avec navigation */}
       <SidebarContent>
