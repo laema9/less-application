@@ -32,7 +32,7 @@ import {
 
 const items = [
   { title: "Home", to: "/home", icon: Home },
-  { title: "Tools", to: "/tools", icon: Wrench },
+  { title: "Tools", to: "/tools/cryptolist", icon: Wrench },
   { title: "Settings", to: "/settings", icon: Settings },
 ]
 
@@ -50,7 +50,7 @@ export function AppSidebar() {
       {/* Contenu principal */}
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>LESS TEST</SidebarGroupLabel>
+          <SidebarGroupLabel>LESS DEVELOP</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
