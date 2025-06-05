@@ -3,15 +3,26 @@ import LandingPage from "@/features/landing/pages/LandingPage"
 import HomePage from "@/features/home/pages/HomePage"
 import DashboardPage from "@/features/dashboard/pages/DashboardPage"
 import AppLayout from "@/shared/layout/AppLayout"
+import LoginPage from "@/features/auth/pages/LoginPage"
+import SignupPage from "@/features/auth/pages/SignupPage"
+import { ProtectedRoute } from "@/features/auth/components/ProtectedRoute"
 
 export default function Router() {
   return (
     <Routes>
-      {/* Route sans layout (pas de sidebar) */}
+      {/* Routes publiques */}
       <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
 
-      {/* Routes avec sidebar */}
-      <Route element={<AppLayout />}>
+      {/* Routes privées avec layout */}
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/home" element={<HomePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
