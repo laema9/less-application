@@ -46,7 +46,7 @@ export function CryptoListTable() {
     const num = parseFloat(value)
     const isPositive = !isNaN(num) && num >= 0
     return (
-      <span className={isPositive ? "text-green-500" : "text-red-500"}>
+      <span className={isPositive ? "text-green-400" : "text-red-400"}>
         {value}
       </span>
     )
@@ -54,46 +54,50 @@ export function CryptoListTable() {
 
   return (
     <div className="w-full overflow-x-auto">
-      <Table className="w-full text-sm md:text-base table-fixed">
-        <TableCaption className="text-xs text-muted-foreground">
+      <Table className="w-full text-base table-auto">
+        <TableCaption className="text-muted-foreground text-xs">
           Updated a second ago. Source: CoinGecko.com
         </TableCaption>
         <TableHeader>
-          <TableRow>
+            <TableRow>
             <TableHead className="w-[60px]">Top</TableHead>
-            <TableHead className="w-[200px]">Name</TableHead>
-            <TableHead className="w-[120px]">Price</TableHead>
-            <TableHead className="w-[100px]">Hour</TableHead>
-            <TableHead className="w-[100px]">Day</TableHead>
-            <TableHead className="w-[100px]">Week</TableHead>
-            <TableHead className="w-[120px]">Mcap</TableHead>
-            <TableHead className="w-[140px]">Volume</TableHead>
-            <TableHead className="w-[140px]">Supply</TableHead>
-          </TableRow>
+            <TableHead className="min-w-[120px]">Name</TableHead>
+            <TableHead className="min-w-[90px]">Price</TableHead>
+            <TableHead className="min-w-[80px]">Hour</TableHead>
+            <TableHead className="hidden md:table-cell min-w-[80px]">Day</TableHead>
+            <TableHead className="hidden lg:table-cell min-w-[80px]">Week</TableHead>
+            <TableHead className="hidden lg:table-cell min-w-[100px]">Mcap</TableHead>
+            <TableHead className="hidden xl:table-cell min-w-[120px]">Volume</TableHead>
+            <TableHead className="hidden xl:table-cell min-w-[120px]">Supply</TableHead>
+            </TableRow>
         </TableHeader>
         <TableBody>
           {currentPageData.map((crypto) => (
             <TableRow key={crypto.Top + crypto.Name}>
               <TableCell className="font-medium">{crypto.Top}</TableCell>
               <TableCell>
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-gray-500" />
-                  <span>{crypto.Name}</span>
+                <div className="flex items-center gap-1 sm:gap-2 md:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gray-500" />
+                  <span className="truncate">{crypto.Name}</span>
                 </div>
               </TableCell>
               <TableCell>{crypto.Price}</TableCell>
               <TableCell>{formatPercent(crypto.Hour)}</TableCell>
-              <TableCell>{formatPercent(crypto.Day)}</TableCell>
-              <TableCell>{formatPercent(crypto.Week)}</TableCell>
-              <TableCell>{crypto.Mcap}</TableCell>
-              <TableCell>{crypto.Volume}</TableCell>
-              <TableCell>{crypto.Supply}</TableCell>
+              <TableCell className="hidden md:table-cell">
+                {formatPercent(crypto.Day)}
+              </TableCell>
+              <TableCell className="hidden lg:table-cell">
+                {formatPercent(crypto.Week)}
+              </TableCell>
+              <TableCell className="hidden lg:table-cell">{crypto.Mcap}</TableCell>
+              <TableCell className="hidden xl:table-cell">{crypto.Volume}</TableCell>
+              <TableCell className="hidden xl:table-cell">{crypto.Supply}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={9}>
+        <TableFooter className="bg-transparent">
+          <TableRow className="bg-transparent">
+            <TableCell colSpan={9} className="bg-transparent">
               <div className="flex justify-center">
                 <Pagination>
                   <PaginationContent>

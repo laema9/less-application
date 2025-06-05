@@ -118,3 +118,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Scrollbar globale (verticale & horizontale) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Fond de la scrollbar (track) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Poignée de la scrollbar (thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.3);
+  border-radius: 4px;
+}
+
+/* Hover pour visibilité */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(160, 160, 160, 0.5);
+}
