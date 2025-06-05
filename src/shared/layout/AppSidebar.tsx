@@ -50,7 +50,7 @@ export function AppSidebar() {
       {/* Contenu principal */}
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>LESS TEST</SidebarGroupLabel>
+          <SidebarGroupLabel>LESS DEVELOP</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
