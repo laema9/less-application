@@ -1,3 +1,7 @@
+import { useUser } from "@/features/auth/hooks/useUser"
+import { supabase } from "@/lib/supabase"
+import { useNavigate, Link } from "react-router-dom"
+
 import {
   Sidebar,
   SidebarContent,
@@ -5,7 +9,6 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  //SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -18,14 +21,13 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu"
 
-import { Link } from "react-router-dom"
 import {
-  //ChevronDown,
   ChevronUp,
   Home,
   Wrench,
   Settings,
   User2,
+  LogOut,
 } from "lucide-react"
 
 const items = [
@@ -35,32 +37,20 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const user = useUser()
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    navigate("/login")
+  }
+
   return (
     <Sidebar>
-      {/* Header avec Dropdown de workspace 
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                  Select Workspace
-                  <ChevronDown className="ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
-                <DropdownMenuItem>Acme Inc</DropdownMenuItem>
-                <DropdownMenuItem>Acme Corp</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader> */}
-
-      {/* Contenu principal avec navigation */}
+      {/* Contenu principal */}
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>LESS DEVELOP</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -78,27 +68,39 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {/* Footer avec Dropdown utilisateur */}
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                  <User2 />
-                  Username
-                  <ChevronUp className="ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent side="top" className="w-[--radix-popper-anchor-width]">
-                <DropdownMenuItem>Account</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Sign out</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+      {/* Footer utilisateur */}
+      {user && (
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton className="w-full justify-start gap-2">
+                    <User2 className="w-4 h-4" />
+                    <span className="truncate max-w-[140px]">{user.email}</span>
+                    <ChevronUp className="ml-auto w-4 h-4" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="top" className="w-full">
+                  <DropdownMenuItem onClick={() => navigate("/account")}>
+                    Account
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/billing")}>
+                    Billing
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={handleLogout}
+                    className="cursor-pointer"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
+      )}
     </Sidebar>
   )
 }
