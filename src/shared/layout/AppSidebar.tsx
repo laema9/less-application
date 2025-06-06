@@ -32,7 +32,7 @@ import {
 
 const items = [
   { title: "Home", to: "/home", icon: Home },
-  { title: "Tools", to: "/tools/cryptolist", icon: Wrench },
+  { title: "Tools", to: "/tools", icon: Wrench },
   { title: "Settings", to: "/settings", icon: Settings },
 ]
 
