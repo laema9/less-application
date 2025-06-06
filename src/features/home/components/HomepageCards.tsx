@@ -12,7 +12,7 @@ export default function HomepageCards(){
     return (
     <Card className="w-full">
         <CardHeader>
-            <CardTitle>Card Title</CardTitle>
+            <CardTitle>Dev Test</CardTitle>
             <CardDescription>Card Description</CardDescription>
             <CardAction>Card Action</CardAction>
         </CardHeader>
