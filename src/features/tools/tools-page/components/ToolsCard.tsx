@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Badge } from "@/shared/ui/badge"
 import { Button } from "@/shared/ui/button"
-import { Plus, Check, ChevronsUpDown } from "lucide-react"
+import { Plus, Check, ChevronsUpDown, ExternalLink } from "lucide-react"
 import {
   Card,
   CardContent,
@@ -42,6 +43,7 @@ type ToolsCardProps = {
   imageUrl?: string
   title?: string
   description?: string
+  page?: string
 }
 
 export function ToolsCard({
@@ -49,6 +51,7 @@ export function ToolsCard({
   imageUrl = "https://via.placeholder.com/600x300?text=No+Image",
   title = "Untitled Tool",
   description = "No description provided.",
+  page = "/tools/#",
 }: ToolsCardProps) {
   const existingScreeners = ["My Screener", "Trading Setup", "Favorites"]
 
@@ -57,15 +60,19 @@ export function ToolsCard({
   const [selectedScreener, setSelectedScreener] = useState("")
   const [newScreener, setNewScreener] = useState("")
 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const screenerToUse = newScreener || selectedScreener
     if (!screenerToUse) return
-    showAddToScreenerToast(title, screenerToUse) // ✅ toast ici
+    showAddToScreenerToast(title, screenerToUse) 
     setDialogOpen(false)
     setSelectedScreener("")
     setNewScreener("")
   }
+
+  const navigate = useNavigate()
+
 
   return (
     <Card className="relative w-full overflow-hidden">
@@ -91,8 +98,16 @@ export function ToolsCard({
 
       {/* Dialog & Button */}
       <CardFooter>
+        <div className="mr-2">
+            <Button variant="outline" size="sm" onClick={() => navigate(page)}>
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Open tools
+            </Button>
+        </div>
+
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
+                            
             <Button variant="outline" size="sm">
               <Plus className="mr-2 h-4 w-4" />
               Add to screener

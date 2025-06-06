@@ -7,10 +7,11 @@ export default function ToolsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ToolsCard
-            category="Analytics"
+            category="Monitoring"
             imageUrl="https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp"
-            title="Crypto Screener"
-            description="Filter cryptocurrencies by volume, trend, and market cap."
+            title="Top crypto list"
+            description="Filter cryptocurrencies by price, volume, trend, and more."
+            page="/tools/cryptolist"
             />
 
             <ToolsCard
