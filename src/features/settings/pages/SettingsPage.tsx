@@ -1,4 +1,4 @@
-import { Settings, Bell, Globe, User, Accessibility } from "lucide-react"
+import { Settings, User } from "lucide-react"
 import { ThemesCombobox } from "../components/ThemesCombobox"
 import { Button } from "@/shared/ui/button"
 import {
