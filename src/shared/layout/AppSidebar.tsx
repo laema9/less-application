@@ -29,10 +29,11 @@ import {
   User2,
   LogOut,
 } from "lucide-react"
+import { ScreenerScroll } from "@/features/sidebar/components/ScreenerScroll"
 
 const items = [
   { title: "Home", to: "/home", icon: Home },
-  { title: "Tools", to: "/tools/cryptolist", icon: Wrench },
+  { title: "Tools", to: "/tools", icon: Wrench },
   { title: "Settings", to: "/settings", icon: Settings },
 ]
 
@@ -64,6 +65,12 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+            
+            <div className="mt-5">
+              <ScreenerScroll />
+              
+            </div>
+
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
