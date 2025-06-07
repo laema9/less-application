@@ -54,13 +54,13 @@ export function CryptoListTable() {
 
   return (
     <div className="w-full overflow-x-auto">
-      <Table className="w-full text-base table-auto">
+      <Table className="w-full text-lg sm:text-base table-auto">
         <TableCaption className="text-muted-foreground text-xs">
           Updated a second ago. Source: CoinGecko.com
         </TableCaption>
         <TableHeader>
-            <TableRow>
-            <TableHead className="w-[60px]">Top</TableHead>
+          <TableRow className="min-h-[56px]">
+            <TableHead className="hidden sm:table-cell w-[60px]">Top</TableHead>
             <TableHead className="min-w-[120px]">Name</TableHead>
             <TableHead className="min-w-[90px]">Price</TableHead>
             <TableHead className="min-w-[80px]">Hour</TableHead>
@@ -69,15 +69,20 @@ export function CryptoListTable() {
             <TableHead className="hidden lg:table-cell min-w-[100px]">Mcap</TableHead>
             <TableHead className="hidden xl:table-cell min-w-[120px]">Volume</TableHead>
             <TableHead className="hidden xl:table-cell min-w-[120px]">Supply</TableHead>
-            </TableRow>
+          </TableRow>
         </TableHeader>
         <TableBody>
           {currentPageData.map((crypto) => (
-            <TableRow key={crypto.Top + crypto.Name}>
-              <TableCell className="font-medium">{crypto.Top}</TableCell>
+            <TableRow
+              key={crypto.Top + crypto.Name}
+              className="min-h-[56px] text-xl sm:text-base"
+            >
+              <TableCell className="hidden sm:table-cell font-medium">
+                {crypto.Top}
+              </TableCell>
               <TableCell>
-                <div className="flex items-center gap-1 sm:gap-2 md:gap-3">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gray-500" />
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gray-500" />
                   <span className="truncate">{crypto.Name}</span>
                 </div>
               </TableCell>
