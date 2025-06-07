@@ -3,7 +3,7 @@ import HomepageCards from "../components/HomepageCards";
 
 export default function HomePage() {
   return (
-    <div className="p-4">
+    <div className="sm:p-5 p-0 mt-3">
       
       <div className="flex flex-wrap gap-4">
         <div className="flex-1 min-w-[200px]">
