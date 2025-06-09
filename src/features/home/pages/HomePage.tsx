@@ -1,5 +1,6 @@
-import { CryptoListTable } from "@/features/tools/crypto-list-table/components/CryptoListTable";
 import HomepageCards from "../components/HomepageCards";
+import MobileCryptoListTable from "@/features/tools/crypto-list-table/components/MobileCryptoListTable"
+
 
 export default function HomePage() {
   return (
@@ -18,7 +19,7 @@ export default function HomePage() {
     </div>
 
       <section className="mt-6 ">
-        <CryptoListTable />
+        <MobileCryptoListTable/>
       </section>
     </div>
   )
