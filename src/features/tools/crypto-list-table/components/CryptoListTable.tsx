@@ -75,7 +75,7 @@ export function CryptoListTable() {
           {currentPageData.map((crypto) => (
             <TableRow
               key={crypto.Top + crypto.Name}
-              className="min-h-[56px] text-xl sm:text-base"
+              className="min-h-[56px] text-lg sm:text-base"
             >
               <TableCell className="hidden sm:table-cell font-medium">
                 {crypto.Top}
