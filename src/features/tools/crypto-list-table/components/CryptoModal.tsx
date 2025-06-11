@@ -9,10 +9,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogClose,
 } from "@/shared/ui/dialog"
-import { Button } from "@/shared/ui/button"
-import { Star } from "lucide-react"
+import { ChevronUp } from "lucide-react"
 import { formatPrice, formatVolume } from "./utils"
 import { MiniChart } from "react-ts-tradingview-widgets"
 
@@ -33,8 +31,8 @@ interface CryptoModalProps {
   onToggleFavorite: () => void
 }
 
-export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: CryptoModalProps) {
-  const { name, symbol, rank, price, changePercent24h, marketCap, volume24h, isFavorite } = data
+export function CryptoModal({ open, onOpenChange, data }: CryptoModalProps) {
+  const { name, symbol, rank, price, changePercent24h, marketCap, volume24h } = data
 
   const [visible, setVisible] = useState(open)
   const [animatingOut, setAnimatingOut] = useState(false)
@@ -52,11 +50,11 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
     }
   }, [open])
 
-  const containerRef = useRef<HTMLDivElement>(null)
+  const swipeRef = useRef<HTMLDivElement>(null)
 
   const bind = useDrag(({ movement: [, my], last }) => {
-    if (last && my < -100) {
-      onOpenChange(false) 
+    if (last && my < -80) {
+      onOpenChange(false)
     }
   })
 
@@ -71,11 +69,7 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
           sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
         `}
       >
-        <div
-          {...bind()}
-          ref={containerRef}
-          className="p-4 sm:p-0 pb-36 overflow-y-auto h-full touch-pan-y"
-        >
+        <div className="p-4 sm:p-0 pb-36 overflow-y-auto h-full">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <span>{symbol}</span>
@@ -109,7 +103,6 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
             </div>
           </div>
 
-          {/* TradingView Chart */}  
           <div className="mt-6 w-full h-[300px]">
             <MiniChart
               symbol={`BITSTAMP:${symbol}USD`}
@@ -123,7 +116,6 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
             />
           </div>
 
-          {/* sections */}
           <section className="mt-[50px]">
             <h2 className="text-lg font-semibold mb-2">Statistics</h2>
             <p className="text-sm text-muted-foreground">Data Data Data Data Data Data Data Data</p>
@@ -140,21 +132,22 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
           </section>
         </div>
 
-        {/* fixed footer */}  
-        <div className="fixed bottom-0 left-0 right-0 bg-background border-t sm:static sm:border-none px-4 py-3 sm:p-0">
-          <div className="flex flex-col gap-2 sm:hidden">
-            <Button variant="outline" onClick={onToggleFavorite} className="w-full">
-              <Star
-                className={`h-4 w-4 mr-2 ${
-                  isFavorite ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"
-                }`}
-              />
-              {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-            </Button>
-            <DialogClose asChild>
-              <Button className="w-full mb-5">Close</Button>
-            </DialogClose>
-          </div>
+        {/* swipe zone */}
+        <div
+          {...bind()}
+          ref={swipeRef}
+          className="fixed bottom-0 left-0 right-0 bg-background border-t sm:static sm:border-none px-4 py-4 sm:p-0 flex flex-col items-center sm:hidden"
+        >
+          <ChevronUp className="h-6 w-6 text-muted-foreground animate-bounce mb-2" />
+
+          {/* <Button variant="outline" onClick={onToggleFavorite} className="w-full">
+            <Star
+              className={`h-4 w-4 mr-2 ${
+                isFavorite ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"
+              }`}
+            />
+            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          </Button> */}
         </div>
       </DialogContent>
     </Dialog>
