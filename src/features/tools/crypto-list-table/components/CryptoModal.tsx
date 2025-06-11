@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import "../style/modal-animation.css"
 
 import {
@@ -34,16 +35,33 @@ interface CryptoModalProps {
 export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: CryptoModalProps) {
   const { name, symbol, rank, price, changePercent24h, marketCap, volume24h, isFavorite } = data
 
+  const [visible, setVisible] = useState(open)
+  const [animatingOut, setAnimatingOut] = useState(false)
+
+  useEffect(() => {
+    if (open) {
+      setVisible(true)
+      setAnimatingOut(false)
+    } else {
+      setAnimatingOut(true)
+      const timeout = setTimeout(() => {
+        setVisible(false)
+      }, 250) // must match animation duration
+      return () => clearTimeout(timeout)
+    }
+  }, [open])
+
+  if (!visible) return null
+
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={true} onOpenChange={onOpenChange}>
       <DialogContent
-        className="
-          dialog-content-animate
+        className={`
+          ${animatingOut ? "dialog-content-animate-exit" : "dialog-content-animate-enter"}
           w-full max-w-full h-dvh rounded-none shadow-none p-0
           sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
-        "
+        `}
       >
-
         <div className="p-4 sm:p-0 pb-36 overflow-y-auto h-full">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
@@ -121,7 +139,7 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
               {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
             </Button>
             <DialogClose asChild>
-              <Button className="w-full">Close</Button>
+              <Button className="w-full mb-5">Close</Button>
             </DialogClose>
           </div>
         </div>
