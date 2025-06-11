@@ -64,9 +64,9 @@ export function CryptoModal({ open, onOpenChange, data }: CryptoModalProps) {
     <Dialog open={true} onOpenChange={onOpenChange}>
       <DialogContent
         className={`
-          ${animatingOut ? "dialog-content-animate-exit" : "dialog-content-animate-enter"}
-          w-full max-w-full h-dvh rounded-none shadow-none p-0
-          sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
+              ${animatingOut ? "dialog-content-animate-exit" : "dialog-content-animate-enter"}
+              w-full max-w-full h-dvh rounded-none shadow-none p-0
+              sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
         `}
       >
         <div className="p-4 sm:p-0 pb-36 overflow-y-auto h-full">

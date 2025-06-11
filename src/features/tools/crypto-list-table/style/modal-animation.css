@@ -9,11 +9,6 @@
   }
 }
 
-.dialog-content-animate {
-  animation: slideInFromTop 300ms ease-out;
-}
-
-
 @keyframes slideOutToTop {
   0% {
     opacity: 1;
@@ -25,12 +20,14 @@
   }
 }
 
-/* Animation entrée */
 .dialog-content-animate-enter {
   animation: slideInFromTop 300ms ease-out forwards;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-/* Animation sortie */
 .dialog-content-animate-exit {
   animation: slideOutToTop 250ms ease-in forwards;
+  will-change: transform;
+  backface-visibility: hidden;
 }
