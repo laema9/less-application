@@ -1,11 +1,12 @@
 import { ScreenerContextMenu } from "../components/ScreenerContextMenu";
+import { ScreenerMenuBar } from "../components/ScreenerMenuBar";
 
 export default function ScreenerPage() {
     return(
         <div className="sm:p-5 p-0 mt-5">
-            <p className="text-xl">LESS Screener 0.0.1</p>
+            <ScreenerMenuBar/>
 
-            <div className="mt-5">
+            <div className="">
                 <ScreenerContextMenu />
             </div>
         </div>

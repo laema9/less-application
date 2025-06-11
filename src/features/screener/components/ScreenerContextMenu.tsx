@@ -18,7 +18,7 @@ export function ScreenerContextMenu() {
   return (
     <ContextMenu>
       <ContextMenuTrigger className="flex h-[700px] w-full items-center justify-center rounded-md border border-dashed text-sm">
-        Right click here
+        Right click to add a tool
       </ContextMenuTrigger>
       <ContextMenuContent className="w-52">
         <ContextMenuItem inset>
