@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import { useDrag } from "@use-gesture/react"
 import "../style/modal-animation.css"
 
 import {
@@ -46,10 +47,18 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
       setAnimatingOut(true)
       const timeout = setTimeout(() => {
         setVisible(false)
-      }, 250) // must match animation duration
+      }, 250)
       return () => clearTimeout(timeout)
     }
   }, [open])
+
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const bind = useDrag(({ movement: [, my], last }) => {
+    if (last && my < -100) {
+      onOpenChange(false) 
+    }
+  })
 
   if (!visible) return null
 
@@ -62,7 +71,11 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
           sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
         `}
       >
-        <div className="p-4 sm:p-0 pb-36 overflow-y-auto h-full">
+        <div
+          {...bind()}
+          ref={containerRef}
+          className="p-4 sm:p-0 pb-36 overflow-y-auto h-full touch-pan-y"
+        >
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <span>{symbol}</span>
@@ -96,7 +109,7 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
             </div>
           </div>
 
-          {/* TradingView Chart */}
+          {/* TradingView Chart */}  
           <div className="mt-6 w-full h-[300px]">
             <MiniChart
               symbol={`BITSTAMP:${symbol}USD`}
@@ -127,7 +140,7 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
           </section>
         </div>
 
-        {/* fixed footer */}
+        {/* fixed footer */}  
         <div className="fixed bottom-0 left-0 right-0 bg-background border-t sm:static sm:border-none px-4 py-3 sm:p-0">
           <div className="flex flex-col gap-2 sm:hidden">
             <Button variant="outline" onClick={onToggleFavorite} className="w-full">
