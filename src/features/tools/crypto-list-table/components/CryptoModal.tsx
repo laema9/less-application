@@ -1,5 +1,7 @@
 "use client"
 
+import "../style/modal-animation.css"
+
 import {
   Dialog,
   DialogContent,
@@ -36,10 +38,12 @@ export function CryptoModal({ open, onOpenChange, data, onToggleFavorite }: Cryp
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="
+          dialog-content-animate
           w-full max-w-full h-dvh rounded-none shadow-none p-0
-          sm:max-w-xl sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
+          sm:max-w-lg sm:h-auto sm:rounded-lg sm:shadow-lg sm:p-6
         "
       >
+
         <div className="p-4 sm:p-0 pb-36 overflow-y-auto h-full">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
