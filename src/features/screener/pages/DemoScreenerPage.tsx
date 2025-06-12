@@ -11,11 +11,11 @@ import "react-resizable/css/styles.css";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const initialWidgets = [
-  { id: "1", name: "Graphique", content: "[Graphique]" },
-  { id: "2", name: "Statistiques", content: "[Statistiques clés]" },
-  { id: "3", name: "Infos société", content: "[Description de la société]" },
-  { id: "4", name: "Actualités", content: "[Fil d'actualités]" },
-  { id: "5", name: "Équipe dirigeante", content: "[Liste des dirigeants]" },
+  { id: "1", name: "Test", content: "[Test]" },
+  { id: "2", name: "Test", content: "[Test]" },
+  { id: "3", name: "Test", content: "[Test]" },
+  { id: "4", name: "Test", content: "[Test]" },
+  { id: "5", name: "Test", content: "[Test]" },
 ];
 
 type Widget = {
@@ -48,9 +48,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="w-full min-h-screen p-6 bg-background text-foreground">
-      <h1 className="text-2xl font-bold mb-6">Dashboard Interactif</h1>
-
+    <main className="">
       <ResponsiveGridLayout
         className="layout"
         layouts={layouts}
