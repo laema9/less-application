@@ -10,6 +10,7 @@ import { ProtectedRoute } from "@/features/auth/components/ProtectedRoute"
 import SettingsPage from "@/features/settings/pages/SettingsPage"
 import ToolsPage from "@/features/tools/tools-page/pages/ToolsPage"
 import ScreenerPage from "@/features/screener/pages/ScreenerPage"
+import Dashboard from "@/features/screener/pages/DemoScreenerPage"
 
 export default function Router() {
   return (
@@ -31,6 +32,7 @@ export default function Router() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/screener" element={<ScreenerPage />} />
+        <Route path="/screener2" element={<Dashboard />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/cryptolist" element={<CryptoListPage />} />
       </Route>
