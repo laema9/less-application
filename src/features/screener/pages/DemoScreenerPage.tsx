@@ -25,7 +25,7 @@ type Widget = {
 };
 
 export default function Dashboard() {
-  const [widgets, setWidgets] = useState<Widget[]>(initialWidgets);
+  const [widgets ] = useState<Widget[]>(initialWidgets);
   const [layouts, setLayouts] = useState<{ [key: string]: Layout[] }>({});
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Dashboard() {
     });
   }, [widgets]);
 
-  const handleLayoutChange = (currentLayout: Layout[], allLayouts: { [key: string]: Layout[] }) => {
+  const handleLayoutChange = (_: Layout[], allLayouts: { [key: string]: Layout[] }) => {
     setLayouts(allLayouts);
   };
 
