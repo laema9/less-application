@@ -28,12 +28,14 @@ import {
   Settings,
   User2,
   LogOut,
+  ScanEye,
 } from "lucide-react"
 import { ScreenerScroll } from "@/features/sidebar/components/ScreenerScroll"
 
 const items = [
   { title: "Home", to: "/home", icon: Home },
   { title: "Tools", to: "/tools", icon: Wrench },
+  { title: "Screener", to: "/screener", icon: ScanEye },
   { title: "Settings", to: "/settings", icon: Settings },
 ]
 
