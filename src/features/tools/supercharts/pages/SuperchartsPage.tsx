@@ -1,5 +1,6 @@
 'use client';
 
+import { CandlestickChart } from '../components/CandleStickChart';
 import { ZoomableChart } from '../components/ZoomableChart';
 
 export default function SuperchartsPage() {
@@ -8,6 +9,7 @@ export default function SuperchartsPage() {
       <div className="w-full max-w-screen-2xl h-[800px]">
         
         <ZoomableChart />
+        <CandlestickChart/>
       </div>
     </main>
   );

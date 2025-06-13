@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/ui/card';
 import { simulateData, getDateRange } from './chartUtils';
 import type { DataPoint } from './chartUtils';
 import { ChartWrapper } from './ChartWrapper';
@@ -46,6 +46,9 @@ export function ZoomableChart() {
               {symbolOptions.find(s => s.value === symbol)?.label || 'Select Symbol'}
             </CardTitle>
           </DialogTrigger>
+          <CardDescription>
+            BETA 0.1
+          </CardDescription>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Symbol change</DialogTitle>
