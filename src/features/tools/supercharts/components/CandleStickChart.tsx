@@ -34,9 +34,56 @@ export const CandlestickChart = () => {
     ]);
 
     const option: echarts.EChartsOption = {
-      tooltip: { trigger: 'axis' },
-      xAxis: { type: 'category', data: dates },
-      yAxis: { scale: true },
+        legend: {
+            data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+            inactiveColor: '#777'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+            animation: false,
+            type: 'cross',
+            lineStyle: {
+                color: '#376df4',
+                width: 2,
+                opacity: 1
+            }
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: dates,
+            axisLine: { lineStyle: { color: '#8392A5' } }
+        },
+        yAxis: {
+            scale: true,
+            axisLine: { lineStyle: { color: '#8392A5' } },
+            splitLine: { show: false }
+        },
+        grid: {
+            bottom: 80
+        },
+        dataZoom: [
+        {
+            textStyle: {
+            color: '#8392A5'
+            },
+            handleIcon: 'path://M10.7,...',
+            dataBackground: {
+            areaStyle: { color: '#8392A5' },
+            lineStyle: { opacity: 0.8, color: '#8392A5' }
+            },
+            brushSelect: true
+        },
+        {
+            type: 'inside',
+            xAxisIndex: 0
+        },
+        {
+            type: 'inside',
+        }
+        ],
+
       series: [
         {
           type: 'candlestick',
@@ -57,6 +104,36 @@ export const CandlestickChart = () => {
           showSymbol: false,
           lineStyle: { width: 1 },
         },
+        {
+        name: 'MA10',
+        type: 'line',
+        data: calculateMA(10, data),
+        smooth: true,
+        showSymbol: false,
+        lineStyle: {
+            width: 1
+        }
+        },
+        {
+        name: 'MA20',
+        type: 'line',
+        data: calculateMA(20, data),
+        smooth: true,
+        showSymbol: false,
+        lineStyle: {
+            width: 1
+        }
+        },
+        {
+        name: 'MA30',
+        type: 'line',
+        data: calculateMA(30, data),
+        smooth: true,
+        showSymbol: false,
+        lineStyle: {
+            width: 1
+        }
+        }
       ],
     };
 

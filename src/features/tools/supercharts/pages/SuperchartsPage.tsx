@@ -1,16 +1,10 @@
 'use client';
-
-import { CandlestickChart } from '../components/CandleStickChart';
-import { ZoomableChart } from '../components/ZoomableChart';
+import AdvancedChartWidget from '../components/TradingviewChart';
 
 export default function SuperchartsPage() {
   return (
-    <main className="flex flex-col items-center justify-center p-4 sm:p-6">
-      <div className="w-full max-w-screen-2xl h-[800px]">
-        
-        <ZoomableChart />
-        <CandlestickChart/>
+      <div className="w-full h-[800px] mt-5">
+        <AdvancedChartWidget symbol="BTCUSD" theme="dark" interval="15" />
       </div>
-    </main>
   );
 }
