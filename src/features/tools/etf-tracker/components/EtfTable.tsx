@@ -25,7 +25,6 @@ const etf = [
 const EtfTable = () => {
     return (
         <div lang="w-full">
-            <h3 className="text-xl mb-5">Bitcoin ETF Overview</h3>
 
             <Table>
                 <TableCaption>
@@ -48,14 +47,12 @@ const EtfTable = () => {
                         <TableCell>{etf.name}</TableCell>
                         <TableCell>{etf.price}</TableCell>
                         <TableCell>{etf.volume}</TableCell>
-                        
                         <TableCell>
-                            <Badge>{etf.status}</Badge>
+                            <Badge className="bg-green-800 hover:bg-gray-400 text-white">{etf.status}</Badge>
                         </TableCell>
                     </TableRow>
                     )
                 )}
-
                 </TableBody>
             </Table>
             
