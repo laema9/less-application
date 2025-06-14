@@ -12,6 +12,7 @@ import ToolsPage from "@/features/tools/tools-page/pages/ToolsPage"
 import ScreenerPage from "@/features/screener/pages/ScreenerPage"
 import Dashboard from "@/features/screener/pages/DemoScreenerPage"
 import SuperchartsPage from "@/features/tools/supercharts/pages/SuperchartsPage"
+import EtfTracker from "@/features/tools/etf-tracker/pages/EtfTracker"
 
 export default function Router() {
   return (
@@ -37,6 +38,7 @@ export default function Router() {
         <Route path="/supercharts" element={<SuperchartsPage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/cryptolist" element={<CryptoListPage />} />
+        <Route path="/tools/etf" element={<EtfTracker />} />
       </Route>
     </Routes>
   )
