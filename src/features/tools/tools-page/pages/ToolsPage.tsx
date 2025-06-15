@@ -11,7 +11,7 @@ export default function ToolsPage() {
             imageUrl="https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp"
             title="Top crypto list"
             description="Filter cryptocurrencies by price, volume, trend, and more."
-            page="/tools/cryptolist"
+            page="/tools/calendar"
             />
 
             <ToolsCard
